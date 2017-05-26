@@ -1,6 +1,3 @@
-/**
- * Created by lucas on 5/25/17.
- */
 public class Trip {
     private Integer tripId;
     private Boolean isPassenger;
@@ -64,5 +61,17 @@ public class Trip {
 
     public void setTripDistance(Float tripDistance) {
         this.tripDistance = tripDistance;
+    }
+
+    @Override
+    public String toString() {
+        return "Trip{" +
+                "tripId=" + tripId +
+                ", isPassenger=" + isPassenger +
+                ", isDriver=" + isDriver +
+                ", numberOfPassengers=" + numberOfPassengers +
+                ", capacity=" + capacity +
+                ", tripDistance=" + tripDistance +
+                '}' + "\n";
     }
 }

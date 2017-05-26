@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -15,27 +17,41 @@ public class Main {
         Boolean readEdge = false;
         Integer countEdge = 0;
 
-        while(sc.hasNextLine()){
+        List<Trip> trips = new LinkedList<Trip>();
+        List<Edge> edges = new LinkedList<Edge>();
+
+        while (sc.hasNextLine()) {
             String line = sc.nextLine();
+            String[] tokens = line.split(" ");
 
             // Se é o primeiro elemento
-            if(!readTrip) {
+            if (!readTrip) {
                 readTrip = true;
                 countTrip = Integer.parseInt(line);
-            }
-            else {
-                if(countTrip > 0) {
-                    System.out.println("Trip: " + line);
+            } else {
+                if (countTrip > 0) {
+
+                    Integer tripId = Integer.parseInt(tokens[0]);
+                    Boolean isPassenger = tokens[1].equals("1");
+                    Boolean isDriver = tokens[2].equals("1");
+                    Integer numberOfPassengers = Integer.parseInt(tokens[3]);
+                    Integer capacity = Integer.parseInt(tokens[4]);
+                    Float tripDistance = Float.parseFloat(tokens[5]);
+
+                    trips.add(new Trip(tripId, isPassenger, isDriver, numberOfPassengers, capacity, tripDistance));
+
                     countTrip--;
-                }
-                else {
-                    if(!readEdge) {
+                } else {
+                    if (!readEdge) {
                         readEdge = true;
                         countEdge = Integer.parseInt(line);
-                    }
-                    else {
-                        if(countEdge > 0) {
-                            System.out.println("Edge: " + line);
+                    } else {
+                        if (countEdge > 0) {
+                            Integer from = Integer.parseInt(tokens[0]);
+                            Integer to = Integer.parseInt(tokens[1]);
+
+                            edges.add(new Edge(from, to));
+
                             countEdge--;
                         }
                     }
@@ -44,6 +60,9 @@ public class Main {
             }
 
         }
+
+        System.out.println(trips);
+        System.out.println(edges);
 
     }
 }
