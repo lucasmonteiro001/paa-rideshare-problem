@@ -6,6 +6,7 @@ import java.util.Set;
 public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges> {
     private Float benefit;
     private List<Edge> edges;
+    private Integer sharedTrips = 0;
 
 
     public BenefitsAndChosenEdges() {
@@ -14,6 +15,12 @@ public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges
     public BenefitsAndChosenEdges(Float benefit, List<Edge> edges) {
         this.benefit = benefit;
         this.edges = edges;
+    }
+
+    public BenefitsAndChosenEdges(Float benefit, List<Edge> edges, Object o, int sharedTrips) {
+        this.benefit = benefit;
+        this.edges = edges;
+        this.sharedTrips = sharedTrips;
     }
 
     static BenefitsAndChosenEdges getMaxBenefit(List<BenefitsAndChosenEdges> listBenefitsAndChosenEdges) {
@@ -46,10 +53,14 @@ public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges
             }
 
             if (isValid) {
-                return new BenefitsAndChosenEdges(b.getBenefit(), b.getEdges());
+                return new BenefitsAndChosenEdges(b.getBenefit(), b.getEdges(), null, allDrivers.size());
             }
         }
         return null;
+    }
+
+    public Integer getSharedTrips() {
+        return sharedTrips;
     }
 
     public Float getBenefit() {
