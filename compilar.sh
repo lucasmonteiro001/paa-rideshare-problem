@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-mkdir -p classes
+mkdir -p classes resultados
 
 rm -rf classes/*
 
