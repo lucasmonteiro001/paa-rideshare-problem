@@ -1,29 +1,39 @@
 public class Edge {
 
     // From (tripId)
-    private Integer from;
+    private String from;
     // From (tripId)
-    private Integer to;
+    private String to;
+    private Float benefit;
 
-    public Edge(Integer from, Integer to) {
+    public Edge(String from, String to, Float benefit) {
         this.from = from;
         this.to = to;
+        this.benefit = benefit;
     }
 
-    public Integer getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(Integer from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public Integer getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(Integer to) {
+    public void setTo(String to) {
         this.to = to;
+    }
+
+    public Float getBenefit() {
+        return benefit;
+    }
+
+    public void setBenefit(Float benefit) {
+        this.benefit = benefit;
     }
 
     @Override
@@ -31,6 +41,7 @@ public class Edge {
         return "Edge{" +
                 "from=" + from +
                 ", to=" + to +
-                '}' + "\n";
+                ", benefit=" + benefit +
+                '}';
     }
 }

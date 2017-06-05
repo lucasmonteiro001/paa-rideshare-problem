@@ -1,12 +1,12 @@
 public class Trip {
-    private Integer tripId;
+    private String tripId;
     private Boolean isPassenger;
     private Boolean isDriver;
     private Integer numberOfPassengers;
     private Integer capacity;
     private Float tripDistance;
 
-    public Trip(Integer tripId, Boolean isPassenger, Boolean isDriver, Integer numberOfPassengers, Integer capacity, Float tripDistance) {
+    public Trip(String tripId, Boolean isPassenger, Boolean isDriver, Integer numberOfPassengers, Integer capacity, Float tripDistance) {
         this.tripId = tripId;
         this.isPassenger = isPassenger;
         this.isDriver = isDriver;
@@ -15,11 +15,11 @@ public class Trip {
         this.tripDistance = tripDistance;
     }
 
-    public Integer getTripId() {
+    public String getTripId() {
         return tripId;
     }
 
-    public void setTripId(Integer tripId) {
+    public void setTripId(String tripId) {
         this.tripId = tripId;
     }
 

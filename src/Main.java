@@ -1,8 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -18,6 +16,7 @@ public class Main {
         Integer countEdge = 0;
 
         List<Trip> trips = new LinkedList<Trip>();
+        Map<String, Trip> mapTrip = new HashMap<String, Trip>();
         List<Edge> edges = new LinkedList<Edge>();
 
         while (sc.hasNextLine()) {
@@ -31,14 +30,17 @@ public class Main {
             } else {
                 if (countTrip > 0) {
 
-                    Integer tripId = Integer.parseInt(tokens[0]);
+                    String tripId = tokens[0];
                     Boolean isPassenger = tokens[1].equals("1");
                     Boolean isDriver = tokens[2].equals("1");
                     Integer numberOfPassengers = Integer.parseInt(tokens[3]);
                     Integer capacity = Integer.parseInt(tokens[4]);
                     Float tripDistance = Float.parseFloat(tokens[5]);
 
-                    trips.add(new Trip(tripId, isPassenger, isDriver, numberOfPassengers, capacity, tripDistance));
+                    Trip trip = new Trip(tripId, isPassenger, isDriver, numberOfPassengers, capacity, tripDistance);
+
+                    trips.add(trip);
+                    mapTrip.put(trip.getTripId(), trip);
 
                     countTrip--;
                 } else {
@@ -47,10 +49,11 @@ public class Main {
                         countEdge = Integer.parseInt(line);
                     } else {
                         if (countEdge > 0) {
-                            Integer from = Integer.parseInt(tokens[0]);
-                            Integer to = Integer.parseInt(tokens[1]);
+                            String from = tokens[0];
+                            String to = tokens[1];
 
-                            edges.add(new Edge(from, to));
+                            // Salva a aresta na lista de arestas
+                            edges.add(new Edge(from, to, mapTrip.get(from).getTripDistance()));
 
                             countEdge--;
                         }
