@@ -26,7 +26,7 @@ public class Main {
         // Monta o grafo para cada lista de combinacoes
         for (List<Edge> edges : allCombinations) {
 
-            Graph graph = GraphUtil.getBuiltGraph(gm.getVertices(), gm.getEdges());
+            Graph graph = GraphUtil.getBuiltGraph(gm.getVertices(), edges);
 
             System.out.print("grafo");
 
