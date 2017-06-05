@@ -6,9 +6,15 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
+        if(args.length != 2) {
+            throw new IllegalArgumentException("É necessário passar o arquivo de entrada e o de saída como parametro," +
+                    " respectivamente.");
+        }
+
         long tStart = System.currentTimeMillis();
 
-        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_6.in";
+        String inputPath = args[0];
+        String outputPath = args[1];
 
         List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
 
@@ -42,7 +48,7 @@ public class Main {
         BenefitsAndChosenEdges chosenBenefitsAndEdges = BenefitsAndChosenEdges.getMaxBenefit
                 (listBenefitsAndChosenEdges);
 
-        FileUtil.saveToFile("saida.txt", chosenBenefitsAndEdges);
+        FileUtil.saveToFile(outputPath, chosenBenefitsAndEdges);
 
 
         System.out.println("Beneficio maximo: " + chosenBenefitsAndEdges.getBenefit());
