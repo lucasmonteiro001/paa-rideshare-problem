@@ -1,13 +1,12 @@
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_8.in";
+        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_0.in";
 
         List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
 
@@ -38,46 +37,14 @@ public class Main {
             listBenefitsAndChosenEdges.add(benefitAndChosenEdges);
         }
 
-        BenefitsAndChosenEdges b = BenefitsAndChosenEdges.getMaxBenefit(listBenefitsAndChosenEdges);
+        BenefitsAndChosenEdges chosenBenefitsAndEdges = BenefitsAndChosenEdges.getMaxBenefit
+                (listBenefitsAndChosenEdges);
 
-        // Formata e imprime no arquivo
-        try{
-            PrintWriter w = new PrintWriter("saida.txt", "UTF-8");
-            w.println(b.getSharedTrips() + " " + b.getBenefit());
-
-            // Monta as linhas com os diferentes motoristas
-            Map<String, List<String>> driverPassengers = new HashMap<>();
-
-            for(Edge e : b.getEdges()) {
-
-                if(driverPassengers.get(e.getDriver()) == null) {
-                    driverPassengers.put(e.getDriver(), new LinkedList<>());
-                }
-
-                driverPassengers.get(e.getDriver()).add(e.getPassenger());
-            }
-
-            for (Map.Entry<String, List<String>> Entry: driverPassengers.entrySet()) {
-
-                String aux = "";
-
-                for (String passengerId : Entry.getValue()) {
-                    aux += " " + passengerId;
-                }
-                w.println(Entry.getKey() + aux);
-            }
-
-            System.out.println(driverPassengers);
+        FileUtil.saveToFile("saida.txt", chosenBenefitsAndEdges);
 
 
-            w.close();
-        } catch (IOException e) {
-            // do something
-        }
-
-
-        System.out.println("Beneficio maximo: " + b.getBenefit());
-        System.out.println("Arestas" + b.getEdges());
+        System.out.println("Beneficio maximo: " + chosenBenefitsAndEdges.getBenefit());
+        System.out.println("Arestas" + chosenBenefitsAndEdges.getEdges());
 
 
         System.out.println("fim");

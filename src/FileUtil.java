@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 public class FileUtil {
@@ -70,5 +72,42 @@ public class FileUtil {
         }
 
         return new GraphMembers(trips, edges);
+    }
+
+    static public void saveToFile(String outputPath, BenefitsAndChosenEdges chosenBenefitAndEdges) {
+        // Formata e imprime no arquivo
+        try{
+            PrintWriter w = new PrintWriter(outputPath, "UTF-8");
+            w.println(chosenBenefitAndEdges.getSharedTrips() + " " + chosenBenefitAndEdges.getBenefit());
+
+            // Monta as linhas com os diferentes motoristas
+            Map<String, List<String>> driverPassengers = new HashMap<>();
+
+            for(Edge e : chosenBenefitAndEdges.getEdges()) {
+
+                if(driverPassengers.get(e.getDriver()) == null) {
+                    driverPassengers.put(e.getDriver(), new LinkedList<>());
+                }
+
+                driverPassengers.get(e.getDriver()).add(e.getPassenger());
+            }
+
+            for (Map.Entry<String, List<String>> Entry: driverPassengers.entrySet()) {
+
+                String aux = "";
+
+                for (String passengerId : Entry.getValue()) {
+                    aux += " " + passengerId;
+                }
+                w.println(Entry.getKey() + aux);
+            }
+
+            System.out.println(driverPassengers);
+
+
+            w.close();
+        } catch (IOException e) {
+            // do something
+        }
     }
 }
