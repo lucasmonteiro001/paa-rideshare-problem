@@ -14,8 +14,10 @@ public class Combination {
         // Current combination is ready to be printed, print it
         if (index == r) {
             List comb = new LinkedList();
-            for (int j = 0; j < r; j++)
-                comb.add(data.get(j));
+            for (int j = 0; j < r; j++) {
+                Edge e = (Edge) (data.get(j));
+                comb.add(e);
+            }
 
             allCombinations.add(comb);
             return;

@@ -1,6 +1,8 @@
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -12,12 +14,24 @@ public class Main {
 
         GraphMembers gm = FileUtil.getGraphStructureFromFile(inputPath);
 
-        System.out.println(gm.getVertices());
-        System.out.println(gm.getEdges());
+        // Cria um mapa para acessar os vertices
+        Map<String, Vertice> verticeMap = new HashMap<>();
 
-        List allCombinations = Combination.getCombinations(gm.getEdges());
+        for (Vertice v : gm.getVertices()) {
+            verticeMap.put(v.getVerticeId(), v);
+        }
 
-        System.out.println(allCombinations);
+        List<List<Edge>> allCombinations = Combination.getCombinations(gm.getEdges());
+
+        // Monta o grafo para cada lista de combinacoes
+        for (List<Edge> edges : allCombinations) {
+
+            Graph graph = GraphUtil.getBuiltGraph(gm.getVertices(), gm.getEdges());
+
+            System.out.print("grafo");
+
+
+        }
 
 
     }

@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.List;
+
 public class Vertice {
     private String verticeId;
     private Boolean isPassenger;
@@ -5,6 +8,7 @@ public class Vertice {
     private Integer numberOfPassengers;
     private Integer capacity;
     private Float tripDistance;
+    private List<Vertice> adjacentVertices = new LinkedList<>();
 
     public Vertice(String verticeId, Boolean isPassenger, Boolean isDriver, Integer numberOfPassengers, Integer capacity, Float tripDistance) {
         this.verticeId = verticeId;
@@ -13,6 +17,10 @@ public class Vertice {
         this.numberOfPassengers = numberOfPassengers;
         this.capacity = capacity;
         this.tripDistance = tripDistance;
+    }
+
+    public List<Vertice> getAdjacentVertices() {
+        return adjacentVertices;
     }
 
     public String getVerticeId() {
