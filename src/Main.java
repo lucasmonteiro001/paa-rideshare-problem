@@ -6,7 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_0.in";
+        long tStart = System.currentTimeMillis();
+
+        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_6.in";
 
         List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
 
@@ -47,7 +49,12 @@ public class Main {
         System.out.println("Arestas" + chosenBenefitsAndEdges.getEdges());
 
 
-        System.out.println("fim");
+        long tEnd = System.currentTimeMillis();
+        long tDelta = tEnd - tStart;
+
+        double elapsedSeconds = tDelta / 1000.0;
+
+        System.out.println("Tempo: " + elapsedSeconds);
 
     }
 }
