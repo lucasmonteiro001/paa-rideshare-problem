@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
@@ -6,6 +7,8 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         String inputPath = "/Users/lucas/Documents/ride-sharing-problem/data/toy.txt";
+
+        List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
 
         GraphMembers gm = FileUtil.getGraphStructureFromFile(inputPath);
 

@@ -1,13 +1,13 @@
-public class Trip {
-    private String tripId;
+public class Vertice {
+    private String verticeId;
     private Boolean isPassenger;
     private Boolean isDriver;
     private Integer numberOfPassengers;
     private Integer capacity;
     private Float tripDistance;
 
-    public Trip(String tripId, Boolean isPassenger, Boolean isDriver, Integer numberOfPassengers, Integer capacity, Float tripDistance) {
-        this.tripId = tripId;
+    public Vertice(String verticeId, Boolean isPassenger, Boolean isDriver, Integer numberOfPassengers, Integer capacity, Float tripDistance) {
+        this.verticeId = verticeId;
         this.isPassenger = isPassenger;
         this.isDriver = isDriver;
         this.numberOfPassengers = numberOfPassengers;
@@ -15,12 +15,12 @@ public class Trip {
         this.tripDistance = tripDistance;
     }
 
-    public String getTripId() {
-        return tripId;
+    public String getVerticeId() {
+        return verticeId;
     }
 
-    public void setTripId(String tripId) {
-        this.tripId = tripId;
+    public void setVerticeId(String verticeId) {
+        this.verticeId = verticeId;
     }
 
     public Boolean getPassenger() {
@@ -65,8 +65,8 @@ public class Trip {
 
     @Override
     public String toString() {
-        return "Trip{" +
-                "tripId=" + tripId +
+        return "Vertice{" +
+                "verticeId=" + verticeId +
                 ", isPassenger=" + isPassenger +
                 ", isDriver=" + isDriver +
                 ", numberOfPassengers=" + numberOfPassengers +

@@ -15,8 +15,8 @@ public class FileUtil {
         Boolean readEdge = false;
         Integer countEdge = 0;
 
-        List<Trip> trips = new LinkedList<Trip>();
-        Map<String, Trip> mapTrip = new HashMap<String, Trip>();
+        List<Vertice> trips = new LinkedList<Vertice>();
+        Map<String, Vertice> mapTrip = new HashMap<String, Vertice>();
         List<Edge> edges = new LinkedList<Edge>();
 
         while (sc.hasNextLine()) {
@@ -37,10 +37,10 @@ public class FileUtil {
                     Integer capacity = Integer.parseInt(tokens[4]);
                     Float tripDistance = Float.parseFloat(tokens[5]);
 
-                    Trip trip = new Trip(tripId, isPassenger, isDriver, numberOfPassengers, capacity, tripDistance);
+                    Vertice trip = new Vertice(tripId, isPassenger, isDriver, numberOfPassengers, capacity, tripDistance);
 
                     trips.add(trip);
-                    mapTrip.put(trip.getTripId(), trip);
+                    mapTrip.put(trip.getVerticeId(), trip);
 
                     countTrip--;
                 } else {
