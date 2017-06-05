@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class Main {
         GraphMembers gm = FileUtil.getGraphStructureFromFile(inputPath);
 
         List<List<Edge>> allCombinations = Combination.getCombinations(gm.getEdges());
+
+        List<BenefitsAndChosenEdges> listBenefitsAndChosenEdges = new LinkedList<>();
 
         // Monta o grafo para cada lista de combinacoes
         for (List<Edge> edges : allCombinations) {
@@ -33,12 +36,13 @@ public class Main {
 
             BenefitsAndChosenEdges benefitAndChosenEdges = GraphUtil.getGraphTotalBenefit(graph);
 
-            System.out.println(benefitAndChosenEdges.getBenefit());
-            System.out.println("=====");
-
-
+            listBenefitsAndChosenEdges.add(benefitAndChosenEdges);
         }
 
+        // Ordena a lista de beneficio
+        Collections.reverse(listBenefitsAndChosenEdges);
+
+        System.out.println("fim");
 
     }
 }

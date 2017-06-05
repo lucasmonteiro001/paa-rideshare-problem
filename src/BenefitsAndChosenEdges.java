@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class BenefitsAndChosenEdges {
+public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges> {
     private Float benefit;
     private List<Vertice> vertices;
 
@@ -17,15 +17,21 @@ public class BenefitsAndChosenEdges {
         return benefit;
     }
 
-    public List<Vertice> getVertices() {
-        return vertices;
-    }
-
     public void setBenefit(Float benefit) {
         this.benefit = benefit;
     }
 
+    public List<Vertice> getVertices() {
+        return vertices;
+    }
+
     public void setVertices(List<Vertice> vertices) {
         this.vertices = vertices;
+    }
+
+
+    @Override
+    public int compareTo(BenefitsAndChosenEdges o) {
+        return (int) (this.benefit - o.benefit);
     }
 }
