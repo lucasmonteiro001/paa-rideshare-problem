@@ -23,19 +23,19 @@ public class Vertice {
         this.verticeId = verticeId;
     }
 
-    public Boolean getPassenger() {
+    public Boolean isPassenger() {
         return isPassenger;
     }
 
-    public void setPassenger(Boolean passenger) {
+    public void setIsPassenger(Boolean passenger) {
         isPassenger = passenger;
     }
 
-    public Boolean getDriver() {
+    public Boolean isDriver() {
         return isDriver;
     }
 
-    public void setDriver(Boolean driver) {
+    public void setIsDriver(Boolean driver) {
         isDriver = driver;
     }
 

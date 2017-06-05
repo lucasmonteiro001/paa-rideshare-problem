@@ -1,31 +1,31 @@
 public class Edge {
 
     // From (tripId)
-    private String from;
+    private String passenger;
     // From (tripId)
-    private String to;
+    private String driver;
     private Float benefit;
 
     public Edge(String from, String to, Float benefit) {
-        this.from = from;
-        this.to = to;
+        this.passenger = from;
+        this.driver = to;
         this.benefit = benefit;
     }
 
-    public String getFrom() {
-        return from;
+    public String getPassenger() {
+        return passenger;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setPassenger(String passenger) {
+        this.passenger = passenger;
     }
 
-    public String getTo() {
-        return to;
+    public String getDriver() {
+        return driver;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setDriver(String driver) {
+        this.driver = driver;
     }
 
     public Float getBenefit() {
@@ -39,8 +39,8 @@ public class Edge {
     @Override
     public String toString() {
         return "Edge{" +
-                "from=" + from +
-                ", to=" + to +
+                "passenger=" + passenger +
+                ", driver=" + driver +
                 ", benefit=" + benefit +
                 '}';
     }

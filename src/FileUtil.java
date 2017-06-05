@@ -49,11 +49,16 @@ public class FileUtil {
                         countEdge = Integer.parseInt(line);
                     } else {
                         if (countEdge > 0) {
-                            String from = tokens[0];
-                            String to = tokens[1];
+                            String passenger = tokens[0];
+                            String driver = tokens[1];
 
-                            // Salva a aresta na lista de arestas
-                            edges.add(new Edge(from, to, mapTrip.get(from).getTripDistance()));
+                            Vertice passengerObj = mapTrip.get(passenger);
+
+                            // Somente adiciona a aresta se o passgeiro for realmente passageiro
+                            if(passengerObj.isPassenger()) {
+                                // Salva a aresta na lista de arestas
+                                edges.add(new Edge(passenger, driver, mapTrip.get(passenger).getTripDistance()));
+                            }
 
                             countEdge--;
                         }
