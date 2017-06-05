@@ -1,11 +1,12 @@
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_6.in";
+        String inputPath = "/Users/lucas/Documents/ride-sharing-problem/toy_tests/toy_0.in";
 
         List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
 
@@ -31,46 +32,16 @@ public class Main {
 
             Graph graph = GraphUtil.getBuiltGraph(vertices, edges);
 
-//            System.out.println("Graph instance: " + Graph.instance);
-
             BenefitsAndChosenEdges benefitAndChosenEdges = GraphUtil.getGraphTotalBenefit(graph);
 
             listBenefitsAndChosenEdges.add(benefitAndChosenEdges);
         }
 
-        // Ordena a lista de beneficio
-        Collections.sort(listBenefitsAndChosenEdges, Collections.reverseOrder());
+        BenefitsAndChosenEdges b = BenefitsAndChosenEdges.getMaxBenefit(listBenefitsAndChosenEdges);
 
-        // Obtém o primeiro benefício válido
-        for(BenefitsAndChosenEdges b : listBenefitsAndChosenEdges) {
-            Set<String> allPassengers = new HashSet<>();
-            Set<String> allDrivers = new HashSet<>();
-            Boolean isValid = true;
+        System.out.println("Beneficio maximo: " + b.getBenefit());
+        System.out.println("Arestas" + b.getEdges());
 
-            for (Edge e : b.getEdges()) {
-                String passengerId = e.getPassenger();
-                String driverId = e.getDriver();
-
-                // Um motorista nao pode ser passageiro e vice versa.
-                if(allPassengers.contains(driverId)) {
-                    isValid = false;
-                    break;
-                }
-                if(allDrivers.contains(passengerId)) {
-                    isValid = false;
-                    break;
-                }
-
-                allPassengers.add(passengerId);
-                allDrivers.add(driverId);
-            }
-
-            if(isValid) {
-                System.out.println("Beneficio maximo: " + b.getBenefit());
-                System.out.println("Arestas" + b.getEdges());
-                break;
-            }
-        }
 
         System.out.println("fim");
 
