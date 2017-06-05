@@ -16,8 +16,6 @@ public class Main {
         String inputPath = args[0];
         String outputPath = args[1];
 
-        List<BenefitsAndChosenEdges> benefits = new LinkedList<>();
-
         GraphMembers gm = FileUtil.getGraphStructureFromFile(inputPath);
 
         List<List<Edge>> allCombinations = Combination.getCombinations(gm.getEdges());
