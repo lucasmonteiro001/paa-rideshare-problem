@@ -19,6 +19,12 @@ public class Vertice {
         this.tripDistance = tripDistance;
     }
 
+    public Boolean isAllowedToAddMorePassengers(Integer numberOfPassengers) {
+        Integer residualCapacity = this.capacity - this.numberOfPassengers;
+
+        return residualCapacity > 0 && residualCapacity >= numberOfPassengers;
+    }
+
     public List<Vertice> getAdjacentVertices() {
         return adjacentVertices;
     }

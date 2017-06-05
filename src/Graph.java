@@ -2,7 +2,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Graph {
-    private static Integer instance;
+    static Integer instance = 0;
     private List<Vertice> vertices = new LinkedList<>();
 
     public Graph(List<Vertice> vertices) {
@@ -11,11 +11,11 @@ public class Graph {
     }
 
     public Graph() {
-
+        Graph.instance += 1;
     }
 
     public static Integer getInstance() {
-        return instance;
+        return Graph.instance;
     }
 
     public List<Vertice> getVertices() {
