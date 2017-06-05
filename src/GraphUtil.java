@@ -46,7 +46,7 @@ public class GraphUtil {
         BenefitsAndChosenEdges b = new BenefitsAndChosenEdges();
 
         Float benefit = new Float(0);
-        List<Vertice> chosenEdges = new LinkedList<>();
+        List<Edge> chosenEdges = new LinkedList<>();
 
         // Calcular o beneficio
         for (Vertice vertice : graph.getVertices()) {
@@ -64,13 +64,14 @@ public class GraphUtil {
                     driver.setNumberOfPassengers(driver.getNumberOfPassengers() + vertice.getNumberOfPassengers());
                     // Aumenta o beneficio
                     benefit += vertice.getTripDistance();
-                    chosenEdges.add(vertice);
+                    // Salva a arestas escolhida
+                    chosenEdges.add(new Edge(vertice.getVerticeId(), driver.getVerticeId()));
                 }
             }
         }
 
         b.setBenefit(benefit);
-        b.setVertices(chosenEdges);
+        b.setEdges(chosenEdges);
 
         return b;
     }

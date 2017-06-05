@@ -12,6 +12,11 @@ public class Edge {
         this.benefit = benefit;
     }
 
+    public Edge(String passengerId, String driverId) {
+        this.passenger = passengerId;
+        this.driver = driverId;
+    }
+
     public String getPassenger() {
         return passenger;
     }

@@ -2,15 +2,10 @@ import java.util.List;
 
 public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges> {
     private Float benefit;
-    private List<Vertice> vertices;
+    private List<Edge> edges;
 
-    public BenefitsAndChosenEdges(Float benefit, List<Vertice> vertices) {
-        this.benefit = benefit;
-        this.vertices = vertices;
-    }
 
     public BenefitsAndChosenEdges() {
-
     }
 
     public Float getBenefit() {
@@ -21,12 +16,12 @@ public class BenefitsAndChosenEdges implements Comparable<BenefitsAndChosenEdges
         this.benefit = benefit;
     }
 
-    public List<Vertice> getVertices() {
-        return vertices;
+    public List<Edge> getEdges() {
+        return edges;
     }
 
-    public void setVertices(List<Vertice> vertices) {
-        this.vertices = vertices;
+    public void setEdges(List<Edge> edges) {
+        this.edges = edges;
     }
 
 
