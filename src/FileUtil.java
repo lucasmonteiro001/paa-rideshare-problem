@@ -86,7 +86,7 @@ public class FileUtil {
             for(Edge e : chosenBenefitAndEdges.getEdges()) {
 
                 if(driverPassengers.get(e.getDriver()) == null) {
-                    driverPassengers.put(e.getDriver(), new LinkedList<>());
+                    driverPassengers.put(e.getDriver(), new LinkedList<String>());
                 }
 
                 driverPassengers.get(e.getDriver()).add(e.getPassenger());
